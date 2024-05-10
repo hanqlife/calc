@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공학용 계산기</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .calculator {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        text-align: center;
+    }
+    .input-field {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+    .btn {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+    <h1>공학용 계산기</h1>
+    <input type="text" id="inputField" class="input-field" readonly>
+    <div>
+        <button class="btn" onclick="clearInput()">C</button>
+        <button class="btn" onclick="appendToInput('7')">7</button>
+        <button class="btn" onclick="appendToInput('8')">8</button>
+        <button class="btn" onclick="appendToInput('9')">9</button>
+        <button class="btn" onclick="appendToInput('+')">+</button>
+    </div>
+    <div>
+        <button class="btn" onclick="appendToInput('4')">4</button>
+        <button class="btn" onclick="appendToInput('5')">5</button>
+        <button class="btn" onclick="appendToInput('6')">6</button>
+        <button class="btn" onclick="appendToInput('-')">-</button>
+    </div>
+    <div>
+        <button class="btn" onclick="appendToInput('1')">1</button>
+        <button class="btn" onclick="appendToInput('2')">2</button>
+        <button class="btn" onclick="appendToInput('3')">3</button>
+        <button class="btn" onclick="appendToInput('*')">*</button>
+    </div>
+    <div>
+        <button class="btn" onclick="appendToInput('0')">0</button>
+        <button class="btn" onclick="appendToInput('.')">.</button>
+        <button class="btn" onclick="calculate()">=</button>
+        <button class="btn" onclick="appendToInput('/')">/</button>
+    </div>
+</div>
+
+<script>
+    function appendToInput(value) {
+        document.getElementById("inputField").value += value;
+    }
+
+    function clearInput() {
+        document.getElementById("inputField").value = "";
+    }
+
+    function calculate() {
+        try {
+            document.getElementById("inputField").value = eval(document.getElementById("inputField").value);
+        } catch(err) {
+            document.getElementById("inputField").value = "Error";
+        }
+    }
+</script>
+
+</body>
+</html>
